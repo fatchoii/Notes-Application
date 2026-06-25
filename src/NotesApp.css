@@ -1,0 +1,333 @@
+/* App shell */
+.notes-app {
+  display: flex;
+  height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #ffffff;
+  color: #1a1a1a;
+  overflow: hidden;
+}
+
+/* Column 1: Folders */
+.folders-col {
+  width: 180px;
+  min-width: 180px;
+  border-right: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  background: #f0efe9;
+  overflow: hidden;
+}
+
+.folders-header {
+  padding: 16px 14px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.folder-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 6px 10px;
+}
+
+.folder-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 2px;
+  transition: background 0.1s;
+}
+
+.folder-item:hover {
+  background: #e4e3dd;
+}
+
+.folder-item.active {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.folder-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.folder-count {
+  margin-left: auto;
+  font-size: 11px;
+  color: #aaa;
+}
+
+.folders-footer {
+  padding: 10px 12px 14px;
+  border-top: 1px solid #e0dfd9;
+}
+
+.new-folder-btn {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: #888;
+  background: none;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.1s, color 0.1s;
+}
+
+.new-folder-btn:hover {
+  border-color: #999;
+  color: #555;
+}
+
+/* Column 2: Notes list  */
+.notes-col {
+  width: 240px;
+  min-width: 240px;
+  border-right: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f7;
+  overflow: hidden;
+}
+
+.notes-col-header {
+  padding: 14px 14px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notes-col-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.new-note-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.1s, color 0.1s;
+}
+
+.new-note-btn:hover {
+  background: #ececec;
+  color: #333;
+}
+
+.search-wrap {
+  margin: 0 10px 10px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 6px 8px 6px 26px;
+  font-size: 13px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.1s;
+}
+
+.search-input:focus {
+  border-color: #b0aee0;
+}
+
+.note-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 6px 10px;
+}
+
+.note-list-empty {
+  padding: 20px 12px;
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.note-item {
+  padding: 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2px;
+  transition: background 0.1s;
+}
+
+.note-item:hover {
+  background: #efefed;
+}
+
+.note-item.active {
+  background: #ffffff;
+  box-shadow: inset 2px 0 0 #7F77DD;
+}
+
+.note-item-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-item-preview {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.note-item-date {
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 3px;
+}
+
+/*  Column 3: Editor  */
+.editor-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #fff;
+}
+
+.editor-toolbar {
+  padding: 12px 20px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.editor-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.editor-folder-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #eeecfb;
+  color: #534AB7;
+  font-weight: 500;
+}
+
+.char-count {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #ccc;
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: color 0.1s;
+}
+
+.delete-btn:hover {
+  color: #e05555;
+}
+
+.title-input {
+  width: 100%;
+  padding: 16px 20px 6px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.title-input::placeholder {
+  color: #ddd;
+}
+
+.body-input {
+  flex: 1;
+  width: 100%;
+  padding: 6px 20px 20px;
+  font-size: 14px;
+  line-height: 1.75;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: #333;
+  font-family: system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.body-input::placeholder {
+  color: #ddd;
+}
+
+/* Empty states */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.empty-state-icon {
+  font-size: 36px;
+  opacity: 0.25;
+}
+
+.empty-state-text {
+  font-size: 14px;
+  color: #bbb;
+}
