@@ -59,6 +59,7 @@ export default function NotesApp() {
   const [activeFolder, setActiveFolder] = useState("all");
   const [activeId, setActiveId] = useState(defaultNotes[0].id);
   const [query, setQuery] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   const titleRef = useRef(null);
   const bodyRef = useRef(null);
@@ -118,11 +119,21 @@ export default function NotesApp() {
     folders.find((f) => f.id === activeFolder)?.label ?? "Notes";
 
   return (
-    <div className="notes-app">
+    <div className={`notes-app${darkMode ? " dark-mode" : ""}`}>
 
       {/* ── Column 1 · Folders ── */}
       <aside className="folders-col">
-        <div className="folders-header">Folders</div>
+        <div className="folders-header">
+          <span className="folders-header-label">Folders</span>
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode((d) => !d)}
+            title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? "☀" : "☾"}
+          </button>
+        </div>
 
         <div className="folder-list">
           {folders.map((f) => (
@@ -209,24 +220,26 @@ export default function NotesApp() {
                 </span>
                 <span className="char-count">{activeNote.body.length} chars</span>
               </div>
+            </div>
+
+            <div className="title-row">
+              <input
+                ref={titleRef}
+                className="title-input"
+                placeholder="Title"
+                maxLength={80}
+                value={activeNote.title}
+                onChange={(e) => updateNote("title", e.target.value)}
+              />
               <button
                 className="delete-btn"
                 onClick={deleteNote}
                 title="Delete note"
                 aria-label="Delete note"
               >
-                🗑
+                🗑 Delete
               </button>
             </div>
-
-            <input
-              ref={titleRef}
-              className="title-input"
-              placeholder="Title"
-              maxLength={80}
-              value={activeNote.title}
-              onChange={(e) => updateNote("title", e.target.value)}
-            />
 
             <textarea
               ref={bodyRef}
